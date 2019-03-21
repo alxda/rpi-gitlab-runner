@@ -9,8 +9,8 @@ RUN curl -s https://packages.gitlab.com/install/repositories/runner/gitlab-runne
 
 RUN sudo apt-get install gitlab-runner=11.8.0
 
-RUN curl -L https://github.com/docker/machine/releases/download/v0.16.1/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine &&
-    chmod +x /tmp/docker-machine &&
+RUN curl -L https://github.com/docker/machine/releases/download/v0.16.1/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine && \
+    chmod +x /tmp/docker-machine && \
     sudo cp /tmp/docker-machine /usr/local/bin/docker-machine
 
 ADD entrypoint /
