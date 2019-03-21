@@ -1,0 +1,27 @@
+kind: pipeline
+name: build:rpi-gitlab-runner
+
+platform:
+  os: linux
+  arch: arm
+
+clone:
+  depth: 1
+
+steps:
+- name: submodules
+  image: docker:git
+  commands:
+    - git submodule update --init
+- name: publish:rpi-gitlab-runner
+  image: plugins/docker:linux-arm
+  group: docker
+  settings:
+    repo: alxda/rpi-gitlab-runner
+    dockerfile: ./Dockerfile
+    debug: true
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: [ rpi-gitlab-runner:latest ]
