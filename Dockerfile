@@ -12,9 +12,6 @@ RUN curl -s https://packages.gitlab.com/install/repositories/runner/gitlab-runne
     chmod +x /tmp/docker-machine && \
     sudo cp /tmp/docker-machine /usr/local/bin/docker-machine
 
-ADD entrypoint /
-RUN chmod +x /entrypoint
-
-VOLUME ["/etc/gitlab-runner", "/home/gitlab-runner"]
-ENTRYPOINT ["/usr/bin/dumb-init", "/entrypoint"]
+VOLUME ["/etc/gitlab-runner", "/home/gitlab-runner", "/var/run/docker.sock"]
+ENTRYPOINT ["gitlab-runner"]
 CMD ["run", "--user=gitlab-runner", "--working-directory=/home/gitlab-runner"]
