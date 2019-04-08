@@ -30,3 +30,4 @@ Reference:
 
 Reference:
     https://docs.gitlab.com/runner/register/index.html#docker
+    https://wwsean08.com/2018/06/setting-up-a-gitlab-runner-on-a-raspberry-pi-in-kubernetes/
